@@ -8,7 +8,11 @@ export default function(appInfo: EggAppConfig) {
   config.keys = appInfo.name + '123123';
 
   config.sequelize = {
-    database: 'egg-sequelize-ts-dev',
+    database: 'dinner',
+    username: "root",
+    password: "root123456",
+    host: "127.0.0.1",
+    dialect: "mysql"
   };
 
   const bizConfig = {
