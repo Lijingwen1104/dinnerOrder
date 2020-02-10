@@ -1,31 +1,31 @@
 # sequelize-ts-example
 
-The [egg] example project that uses [egg-sequelize] plugin. It will show you how to use sequelize in egg project, use [migrations] to help you manage changes of database and use [factory-girl] to help you write test cases more maintainable.
+这个 [egg] 示例项目示范如何使用 [egg-sequelize] 插件。它会展示如何在 egg 项目中使用 [sequelize] 连接数据库，使用 [migrations] 来管理数据结构变更，并通过 [factory-girl] 来编写更易于维护的测试用例。
 
-## QuickStart
+## 快速开始
 
-### Dependencies
+### 安装依赖
 
-- install mysql and create database
+- 安装 mysql 并建立数据库
 
 ```bash
 brew install mysql # macOS
-brew service start mysql
+brew services start mysql
 
 mysql
   > create database `egg-sequelize-ts-dev`;
   > create database `egg-sequelize-ts-unittest`;
 ```
 
-- install dependencies
+- 安装 node 依赖
 
 ```bash
 npm install
 ```
 
-### Start Server and Run Test
+### 启动和测试
 
-- prepare database structure
+- 执行 migration 执行数据变更
 
 ```bash
 # for develop
@@ -34,13 +34,13 @@ npm run sequelize -- db:migrate
 NODE_ENV=test npm run sequelize -- db:migrate
 ```
 
-- start project
+- 启动项目
 
 ```bash
 npm run dev
 ```
 
-- run test
+- 运行测试
 
 ```bash
 npm test
