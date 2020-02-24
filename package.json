@@ -15,7 +15,7 @@
     "egg-mock": "^3.19.2",
     "factory-girl": "^5.0.2",
     "lodash": "^4.17.10",
-    "sequelize-cli": "^5.0.0"
+    "sequelize-cli": "^5.5.1"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -30,7 +30,9 @@
     "cov": "egg-bin cov",
     "ci": "npm run cov",
     "autod": "autod",
-    "sequelize": "sequelize --"
+    "sequelize": "sequelize --",
+    "debug": "egg-bin debug"
+ 
   },
   "author": "Qi Yu <njuyuqi@gmail.coom>",
   "license": "MIT"

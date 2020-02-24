@@ -1,44 +1,56 @@
 'use strict';
 
 import { Service } from 'egg';
-import { CreateOptions } from 'sequelize';
+// import { CreateOptions } from 'sequelize';
 
 class User extends Service {
-  async list({ offset = 0, limit = 10 }: { offset: number; limit: number; }) {
-    return this.ctx.model.User.findAndCountAll({
-      offset,
-      limit,
-      order: [[ 'created_at', 'desc' ], [ 'id', 'desc' ]],
+  async login(um: string, password: string) {
+      const user = await this.ctx.model.User.findAll({
+      where: {
+        um,
+        password
+      }
     });
+    return user
   }
 
-  async find(id: number) {
-    const user = await this.ctx.model.User.findByPk(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
-    }
-    return user!;
-  }
+  // async list({ offset = 0, limit = 10 }: { offset: number; limit: number; }) {
+  //   return this.ctx.model.User.findAndCountAll({
+  //     offset,
+  //     limit,
+  //     order: [[ 'created_at', 'desc' ], [ 'id', 'desc' ]],
+  //   });
+  // }
 
-  async create(user: CreateOptions) {
-    return this.ctx.model.User.create(user);
-  }
+  // async find(id: number) {
+    
+  //   const user = await this.ctx.model.User.findByPk(id);
+    
+  //   if (!user) {
+  //     this.ctx.throw(404, 'user not found');
+  //   }
+  //   return user!;
+  // }
 
-  async update({ id, updates }: { id: number; updates: object }) {
-    const user = await this.ctx.model.User.findByPk(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
-    }
-    return user!.update(updates);
-  }
+  // async create(user: CreateOptions) {
+  //   return this.ctx.model.User.create(user);
+  // }
 
-  async del(id: number) {
-    const user = await this.ctx.model.User.findByPk(id);
-    if (!user) {
-      this.ctx.throw(404, 'user not found');
-    }
-    return user!.destroy();
-  }
+  // async update({ id, updates }: { id: number; updates: object }) {
+  //   const user = await this.ctx.model.User.findByPk(id);
+  //   if (!user) {
+  //     this.ctx.throw(404, 'user not found');
+  //   }
+  //   return user!.update(updates);
+  // }
+
+  // async del(id: number) {
+  //   const user = await this.ctx.model.User.findByPk(id);
+  //   if (!user) {
+  //     this.ctx.throw(404, 'user not found');
+  //   }
+  //   return user!.destroy();
+  // }
 }
 
 module.exports = User;
